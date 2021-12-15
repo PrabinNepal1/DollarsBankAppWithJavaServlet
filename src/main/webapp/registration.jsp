@@ -29,63 +29,70 @@
     	
   	</div>
 </header>
-	<section class="vh-75" style="background-color: #eee;">
+	<section class="vh-100" style="background-color: #eee;">
 	  <div class="container">
 	    <div class="row d-flex justify-content-center align-items-center h-100">
 	      <div class="col-lg-12 col-xl-11">
-	        <div class="card text-black" style="border-radius: 25px;">
+	        <div class="card text-black mt-5" style="border-radius: 25px;">
 	          <div class="card-body p-md-5">
 	            <div class="row justify-content-center">
 	              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 	
-	                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-					<p class="text-danger"> 
-						<span class="error">${error}</span>
-					</p>
-	                <form class="mx-1 mx-md-2" method="POST">
-	
+	                <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-4">Sign up</p>
+					
+	                <form class="mx-1 mx-md-2" method="POST" action="./RegistrationServlet">
 	                  <div class="d-flex flex-row align-items-center mb-2">
 	                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
 	                    <div class="form-outline flex-fill mb-0">
-	                      <input type="text" id="form3Example1c" name="userName" class="form-control" />
 	                      <label class="form-label" for="form3Example1c">User Name</label>
+	                      <span class="text-danger"><% request.getAttribute("errors.invalidUserId"); %></span>
+	                      <input type="text" id="form3Example1c" name="userName" class="form-control" />
+	                      
 	                    </div>
 	                  </div>
 	
 	                  <div class="d-flex flex-row align-items-center mb-2">
 	                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 	                    <div class="form-outline flex-fill mb-0">
+	                    	 <label class="form-label" for="form3Example3c">Your Email</label>
 	                      <input type="email" id="form3Example3c" name="email" class="form-control" />
-	                      <label class="form-label" for="form3Example3c">Your Email</label>
+	                     
 	                    </div>
 	                  </div>
 	
 	                  <div class="d-flex flex-row align-items-center mb-2">
 	                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
 	                    <div class="form-outline flex-fill mb-0">
+	                    	 <label class="form-label" for="form3Example4c">Password</label>
+	                    	 <span class="text-danger"><%  request.getAttribute("errors.invalidPassword"); %>
+							</span>
 	                      <input type="password" id="form3Example4c" name="password" class="form-control" />
-	                      <label class="form-label" for="form3Example4c">Password</label>
+	                     
 	                    </div>
 	                  </div>
 	
 	                  <div class="d-flex flex-row align-items-center mb-2">
 	                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
 	                    <div class="form-outline flex-fill mb-0">
+	                    	 <label class="form-label" for="form3Example4cd">Repeat your password</label>
+	                    	 
+	                    	 <span class="text-danger" name="errorInvalidPassword"><%  request.getAttribute("errors.passwordMismatch"); %></span>
 	                      <input type="password" id="form3Example4cd" name="confirmPassword" class="form-control" />
-	                      <label class="form-label" for="form3Example4cd">Repeat your password</label>
+	                     
 	                    </div>
 	                  </div>
 	                  
 	                  <div class="d-flex flex-row align-items-center mb-2">
 	                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
 	                    <div class="form-outline flex-fill mb-0">
-	                      <input type="number" min=1 id="form3Example4cde" name="initialDeposit" class="form-control" />
-	                      <label class="form-label" for="form3Example4cde">Initial Deposit</label>
+	                    	<label class="form-label" for="form3Example4cde">Initial Deposit</label>
+	                      <input type="number" min=1 id="form3Example4cde" name="initialDeposit" class="form-control" required />
+	                      
 	                    </div>
 	                  </div>
 	
 	                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-2">
-	                    <button type="button" class="btn btn-primary btn-lg">Register</button>
+	                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
 	                  </div>
 	
 	                </form>
@@ -99,7 +106,7 @@
 	    </div>
 	  </div>
 </section>
-<footer style="position:absolute; bottom:0px; width:100%;"class="bg-dark text-center text-white py-2 ">
+<footer style="width:100%;"class="bg-dark text-center text-white py-2 ">
   <div class="container">
     <p class="m-0">Copyright &copy; Dollars Bank 2021</p>
   </div>

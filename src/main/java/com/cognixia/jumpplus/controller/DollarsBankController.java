@@ -17,7 +17,7 @@ import com.cognixia.jumpplus.utility.FileStorageUtility;
 
 public class DollarsBankController {
 
-	public static List<Customer> customerList;
+	public List<Customer> customerList;
 	public List<Account> accountList;
 	public Customer currentCustomer , transferReceiver;
 	
@@ -71,7 +71,7 @@ public class DollarsBankController {
 	}
 	
 	
-	public static boolean validUserId(String id) {
+	public boolean validUserId(String id) {
 		for(int i=0; i <customerList.size(); i++) {
 			if(customerList.get(i).getUserId().equals(id)) {
 				return false;

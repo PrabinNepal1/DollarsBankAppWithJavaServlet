@@ -34,10 +34,10 @@
   		<h3 class="mt-5">Dollars Bank</h3>
   		<ul class="nav flex-column">
 		  <li class="nav-item">
-		  	<a href="registration.html" class="btn btn-primary btn-lg active w-50" role="button" aria-pressed="true">Create Account</a>
+		  	<a href="HomePageServlet?action=registration" class="btn btn-primary btn-lg active w-50" role="button" aria-pressed="true">Create Account</a>
 		  </li>
 		  <li class="nav-item">
-		  	<a href="#" class="btn btn-primary btn-lg active w-50" role="button" aria-pressed="true">Login</a>
+		  	<a href="HomePageServlet?action=login" class="btn btn-primary btn-lg active w-50" role="button" aria-pressed="true">Login</a>
 		  </li>
 		</ul>
   </div>
