@@ -240,7 +240,7 @@ public class DollarsBankController {
 	}
 	
 	public void writeToFile() {
-		File file = new File("/resource/objectFile.txt");
+		File file = new File("/resources/objectFile.txt");
 		
 		FileStorageUtility.writeToFile(file, customerList);
 		

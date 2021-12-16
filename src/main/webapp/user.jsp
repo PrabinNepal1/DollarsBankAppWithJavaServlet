@@ -39,26 +39,22 @@
 	              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 	
 	                <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-4">User Info</p>
-	               <p class="text-left h3 fw-bold mb-2 mx-1 mx-md-4 mt-4">Name: </p>
-	               <p class="text-left h3 fw-bold mb-2 mx-1 mx-md-4 mt-4">Email: </p>
-	               <p class="text-left h3 fw-bold mb-2 mx-1 mx-md-4 mt-4"> Balance: </p>
+	               <p class="text-left h3 fw-bold mb-2 mx-1 mx-md-4 mt-4">Name: <%= request.getAttribute("name") %></p>
+	               <p class="text-left h3 fw-bold mb-2 mx-1 mx-md-4 mt-4">Email: <%= request.getAttribute("email") %></p>
+	               <p class="text-left h3 fw-bold mb-2 mx-1 mx-md-4 mt-4"> Balance: <%= request.getAttribute("balance")  %> </p>
 	               
-	                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#depositModal">Deposit</button>
-	                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#withdrawModal">Withdraw</button>
-	                <button type="button"class="btn btn-primary btn-md" data-toggle="modal" data-target="#transferModal">Transfer</button>
-	                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#transactionModal">Recent Transaction</button>
+	                <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#depositModal">Deposit</button>
+	                <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#withdrawModal">Withdraw</button>
+	                <button type="button"class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#transferModal">Transfer</button>
+	                <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#transactionModal">Recent Transaction</button>
 	               
-	                 </div>
-	                 
-					 <!-- Deposit Modal -->
-					<div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	         		 <!-- Deposit Modal -->
+					<div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="depositModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
+					        <h5 class="modal-title" id="depositModalLabel">Deposit</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					      </div>
 					      <div class="modal-body">
 					        <form class="mx-1 mx-md-2" method="POST" action="./LoginServlet">
@@ -79,7 +75,7 @@
 	                    </div>
 					      </div>
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					        <button type="button" class="btn btn-primary">Deposit</button>
 					      </div>
 					    </div>
@@ -87,14 +83,12 @@
 					</div>
 					
 					 <!-- Withdraw Modal -->
-					 <div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					 <div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="withdrawModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
+					        <h5 class="modal-title" id="withdrawModalLabel">Modal title</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					      </div>
 					      <div class="modal-body">
 					         <form class="mx-1 mx-md-2" method="POST" action="./LoginServlet">
@@ -114,7 +108,7 @@
 	               			 </form>
 					      </div>
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					        <button type="button" class="btn btn-primary">Withdraw</button>
 					      </div>
 					    </div>
@@ -123,19 +117,16 @@
 					 
 					 
 					 <!-- Transfer Modal -->
-					 <div class="modal fade" id="transferModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					 <div class="modal fade" id="transferModal" tabindex="-1" role="dialog" aria-labelledby="transferModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
+					        <h5 class="modal-title" id="transferModalLabel">Modal title</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					      </div>
 					      <div class="modal-body">
 					        <form class="mx-1 mx-md-2" method="POST" action="./LoginServlet">
 				                  <div class="d-flex flex-row align-items-center mb-2">
-				                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
 				                    <div class="form-outline flex-fill mb-0">
 				                      <label class="form-label" for="form3Example1c">User Name</label>
 				 
@@ -148,7 +139,6 @@
 				                      <label class="form-label" for="form3Example1c">Amount</label>
 				 
 				                      <input type="number" min=1 id="form3Example1c" name="userName" class="form-control" />
-				                      <span class="text-danger">Error</span>
 				                     </div>
 				                    
 				                    
@@ -159,7 +149,7 @@
 	               			 </form>
 					      </div>
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					        <button type="button" class="btn btn-primary">Save changes</button>
 					      </div>
 					    </div>
@@ -168,25 +158,27 @@
 					 
 					 
 					 <!-- Transaction Modal -->
-					 <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					 <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
+					        <h5 class="modal-title" id="transactionModalLabel">Modal title</h5>
+					        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 					      </div>
 					      <div class="modal-body">
 					        
 					      </div>
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					        <button type="button" class="btn btn-primary">Save changes</button>
 					      </div>
 					    </div>
 					  </div>
 					</div>
+	               
+	                 </div>
+	                 
+					
 					
 	             
 	            </div>
