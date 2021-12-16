@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,12 +43,14 @@
 	                <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-4">Sign up</p>
 					
 	                <form class="mx-1 mx-md-2" method="POST" action="./RegistrationServlet">
+	             
 	                  <div class="d-flex flex-row align-items-center mb-2">
 	                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
 	                    <div class="form-outline flex-fill mb-0">
 	                      <label class="form-label" for="form3Example1c">User Name</label>
-	                      <span class="text-danger"><% request.getAttribute("errors.invalidUserId"); %></span>
+	 
 	                      <input type="text" id="form3Example1c" name="userName" class="form-control" />
+	                      <span class="text-danger"><%= request.getAttribute("invalidUserId") %></span>
 	                      
 	                    </div>
 	                  </div>
@@ -64,7 +68,7 @@
 	                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
 	                    <div class="form-outline flex-fill mb-0">
 	                    	 <label class="form-label" for="form3Example4c">Password</label>
-	                    	 <span class="text-danger"><%  request.getAttribute("errors.invalidPassword"); %>
+	                    	 <span class="text-danger"><%=  request.getAttribute("invalidPassword") %>
 							</span>
 	                      <input type="password" id="form3Example4c" name="password" class="form-control" />
 	                     
@@ -76,7 +80,7 @@
 	                    <div class="form-outline flex-fill mb-0">
 	                    	 <label class="form-label" for="form3Example4cd">Repeat your password</label>
 	                    	 
-	                    	 <span class="text-danger" name="errorInvalidPassword"><%  request.getAttribute("errors.passwordMismatch"); %></span>
+	                    	 <span class="text-danger" name="errorInvalidPassword"><%=  request.getAttribute("passwordMismatch") %></span>
 	                      <input type="password" id="form3Example4cd" name="confirmPassword" class="form-control" />
 	                     
 	                    </div>
@@ -90,7 +94,7 @@
 	                      
 	                    </div>
 	                  </div>
-	
+					
 	                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-2">
 	                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
 	                  </div>

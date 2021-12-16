@@ -238,5 +238,13 @@ public class DollarsBankController {
 		return true;
 			
 	}
+	
+	public void writeToFile() {
+		File file = new File("/resource/objectFile.txt");
+		
+		FileStorageUtility.writeToFile(file, customerList);
+		
+		System.out.println("File Written!");
+	}
 
 }

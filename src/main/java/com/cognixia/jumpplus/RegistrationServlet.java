@@ -25,7 +25,7 @@ public class RegistrationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Create a Bundle of errors in the form of Map
-        Map<String, String> errors = new HashMap<String, String>();
+        //Map<String, String> errors = new HashMap<String, String>();
         
 		//getParameter() will read all form data as string
 		
@@ -35,29 +35,39 @@ public class RegistrationServlet extends HttpServlet {
 		String confirmPassword = request.getParameter("confirmPassword");
 		double initialDeposit = Double.parseDouble(request.getParameter("initialDeposit"));
 		
+		
+		
 		if(!bankCont.validPassword(password)){
-			errors.put("invalidPassword", "Password must be 8 charachter long with at least one Uppercase, Symbol and Number");
+			request.setAttribute("invalidPassword", "Invalid Password");
+			RequestDispatcher err = request.getRequestDispatcher("registration.jsp");
+			err.include(request, response);
 		}
 		
-		if(!password.equals(confirmPassword)){
-			errors.put("passwordMismatch", "Passwords do not match");
+		else if(!password.equals(confirmPassword)){
+			request.setAttribute("passwordMismatch", "Confirm you password. They don't match");
+			RequestDispatcher err = request.getRequestDispatcher("registration.jsp");
+			err.include(request, response);
 		}
-		if(!bankCont.validUserId(email)) {
-			errors.put("invalidUserId", "Username Already Exist");
+		else if(!bankCont.validUserId(userName)) {
+			request.setAttribute("invalidUserId", "Username already exist");
+			RequestDispatcher err = request.getRequestDispatcher("registration.jsp");
+			err.include(request, response);
 			
 		}
-		if(errors.isEmpty()) {
+		else {
+			
 			Account account = bankCont.addInitialTransaction(initialDeposit, userName);
 			Customer customer = new Customer(email, userName, password, account);
 			bankCont.addCustomer(customer);
+			bankCont.writeToFile();
+			
+			for(Customer c: bankCont.customerList) {
+				System.out.println(c.getUserId());
+			}
 
 	 		response.sendRedirect("login.jsp");  
-	 		  
-		}else {
-			request.setAttribute("errors", errors);
-			request.getRequestDispatcher("registration.jsp").forward(request, response);
 		}
-	
+		
 		
 	}
 	
